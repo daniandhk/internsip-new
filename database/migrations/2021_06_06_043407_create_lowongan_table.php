@@ -20,7 +20,7 @@ class CreateLowonganTable extends Migration
             $table->string('imageName');
             $table->string('jabatan');
             $table->string('kota');
-            $table->string('provinsi');
+            $table->string('alamat');
             $table->string('durasi');
             $table->string('deskripsi');
             $table->string('gaji');

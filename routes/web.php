@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LowonganController;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -16,11 +17,47 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/', function () {
-    return view('home');
+    $count_lowongan = DB::table('lowongan')
+                        ->count();
+    $count_perusahaan = DB::table('perusahaan')
+                        ->count();
+    return view('home')
+                ->with(['count_lowongan' => $count_lowongan])
+                ->with(['count_perusahaan' => $count_perusahaan]);
 });
 
 Route::get('/profile', function () {
-    return view('profile');
+    if(session('status') == 'LOGGED_IN'){
+        $id = session('user')->id;
+        $lowongan = App\Models\Lowongan::orderBy('id', 'asc')
+                                    ->get();
+        $lamaran = App\Models\Lamaran::orderBy('id', 'asc')
+                                    ->get();
+        if(session('role') == 'Admin') {
+            // $data = App\Models\Admin::findOrFail($id);
+            // return view('profile')
+            //     ->with(['data' => $data]);
+            return redirect('/');
+        }
+        elseif(session('role') == 'Perusahaan') {
+            $data = App\Models\Perusahaan::findOrFail($id);
+            return view('profile')
+                ->with(['data' => $data])
+                ->with(['lamaran' => $lamaran])
+                ->with(['lowongan' => $lowongan]);
+        }
+        elseif(session('role') == 'User') {
+            $data = App\Models\User::findOrFail($id);
+            return view('profile')
+                ->with(['data' => $data])
+                ->with(['lamaran' => $lamaran]);
+        }
+        else {
+            return redirect('/');
+        }
+    } else {
+        return redirect('/');
+    }
 });
 
 Route::get('/list-lowongan', function() {
@@ -67,3 +104,8 @@ Route::get('/register-perusahaan', function() {
     }
 });
 Route::post('perusahaanRegisterForm',[UserController::class,'registerPerusahaan']);
+
+Route::post('/updateProfile/{id}',[UserController::class,'updateProfile']);
+Route::post('/addLowongan',[LowonganController::class,'addLowongan']);
+Route::post('/updateLowongan/{id}',[LowonganController::class,'updateLowongan']);
+Route::delete('/deleteLowongan/{id}',[LowonganController::class,'deleteLowongan']);

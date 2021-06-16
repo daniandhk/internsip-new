@@ -62,7 +62,7 @@
                             <div class="row">
                                 <div class="form-group col-8 mx-auto">
                                     <label for="">Deskripsi</label>
-                                    <input type="text" class="form-control" id="deskripsi" name="deskripsi" required>
+                                    <textarea type="text" class="form-control" id="deskripsi" name="deskripsi" rows="3" required></textarea>
                                     @error('deskripsi')
                                         <span class="text-danger">{{$message}}</span>
                                     @enderror

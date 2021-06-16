@@ -18,12 +18,12 @@
     <div id="lowongan-list" class="row justify-content-center" style="background-color: #E5E5E5;">
         @foreach ($datas as $lowongan)
         <div class="col-md-6 col-lg-4 d-flex align-items-stretch">
-            <div class="card w-100 border-0 mb-5 mt-5 pl-4 pr-4">
-                <img class="img-fluid object-fit-contain" src="{{url('/images/Perusahaan').'/'.$lowongan->imageName}}" alt="{{$lowongan->nama_perusahaan}}">
-                <div class="card-body">
-                    <h5 style="font-size: xx-large;" class="card-title disabled text-center">{{$lowongan->nama_perusahaan}}</h5>
-                    <p style="font-size: x-large;" class="card-text text-center ">{{$lowongan->jabatan}}</p>
-                    <p style="font-size: x-large;" class="card-text text-center ">{{$lowongan->kota}}, {{$lowongan->jabatan}}</p>
+            <div class="card w-100 border-0 mb-5 mt-5">
+                <img class="img-fluid object-fit-contain" src="{{url('/images/Avatar').'/'.$lowongan->imageName}}" alt="{{$lowongan->nama_perusahaan}}">
+                <div class="card-body pl-4 pr-4">
+                    <p style="font-size: x-large;" class="card-title disabled text-center">{{$lowongan->nama_perusahaan}}</p>
+                    <h5 style="font-size: xx-large;" class="card-text text-center ">{{$lowongan->jabatan}}</h5>
+                    <p style="font-size: x-large;" class="card-text text-center ">{{$lowongan->kota}}</p>
                     <p style="font-size: x-large;" class="card-text text-center ">{{$lowongan->durasi}}</p>
                     <p style="font-size: x-large;" class="card-text text-center ">{{$lowongan->gaji}}</p>
                     <p style="font-size: x-large;" class="merch-desc card-text text-center pr-3 pl-3 pb-1" style="min-height:64px;">{{Str::limit($lowongan->deskripsi, 60)}}</p>
@@ -48,12 +48,13 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                         <img class="img-fluid"
-                            src="{{ url('/images/Perusahaan') . '/' . $lowongan->imageName }}" alt="{{$lowongan->nama_perusahaan}}">
+                            src="{{ url('/images/Avatar') . '/' . $lowongan->imageName }}" alt="{{$lowongan->nama_perusahaan}}">
                         <hr>
                         <div class="px-4" style="text-align: justify">
                             <h2>{{$lowongan->nama_perusahaan}}</h2>
                             <h4 class="">{{$lowongan->jabatan}}</h4>
-                            <h4 class="">{{$lowongan->kota}}, {{$lowongan->jabatan}}</h4>
+                            <h4 class="">{{$lowongan->kota}}</h4>
+                            <h4 class="">{{$lowongan->alamat}}</h4>
                             <h4 class="">{{$lowongan->jabatan}}</h4>
                             <h4 class="">{{$lowongan->gaji}}</h4>
                             <p style="text-indent:50px">{{$lowongan->deskripsi}}</p>

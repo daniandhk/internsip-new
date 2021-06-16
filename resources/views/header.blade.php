@@ -16,6 +16,8 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     {{-- AOS michalsnik.github.io/aos/ --}}
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    {{-- simple-sidebar.css --}}
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/simple-sidebar.css') }}">
 
 </head>
 
@@ -49,7 +51,7 @@
                         }
                         @endphp
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         @php
                         if(\Request::is('list-perusahaan')) {
                             echo '<a id="active" class="nav-link" href="#">Cari Perusahaan</a>';
@@ -57,7 +59,7 @@
                             echo '<a id="nav-link" class="nav-link" href="'.url('/list-perusahaan').'">Cari Perusahaan</a>';
                         }
                         @endphp
-                    </li>
+                    </li> -->
                 </ul>
                 <ul class="navbar-nav mr-4" style="list-style-type: none;">
                     <li class="nav-item dropdown">
