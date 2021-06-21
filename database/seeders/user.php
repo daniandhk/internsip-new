@@ -15,12 +15,12 @@ class user extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'email' => 'tes@tes',
+            'email' => 'tes@gmail.com',
             'password' => md5('tes'),
-            'nama' => 'tes',
-            'ttl' => 'tes@tes',
-            'telepon' => 'tes@tes',
-            'imageName' => 'tes@tes',
+            'nama' => 'Testing User',
+            'ttl' => 'Malang, 7 April 1999',
+            'telepon' => '081220436175',
+            'imageName' => 'default-ava.png',
         ]);
     }
 }

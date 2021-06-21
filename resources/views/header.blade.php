@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     {{-- simple-sidebar.css --}}
     <link rel="stylesheet" type="text/css" href="{{ url('/css/simple-sidebar.css') }}">
+    {{-- Animation.style --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    {{-- Datatable --}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
 
 </head>
 

@@ -24,8 +24,6 @@ class LowonganController extends Controller
             $data = new Lowongan();
 
             $data->id_perusahaan = session('user')->id;
-            $data->nama_perusahaan = session('user')->nama;
-            $data->imageName = session('user')->imageName;
             $data->jabatan = $req->jabatan;
             $kota = $req->jenis_wilayah . ' ' . $req->nama_wilayah;
             $data->kota = $kota;
@@ -45,8 +43,6 @@ class LowonganController extends Controller
             $data = Lowongan::find($id);
 
             $data->id_perusahaan = session('user')->id;
-            $data->nama_perusahaan = session('user')->nama;
-            $data->imageName = session('user')->imageName;
             $data->jabatan = $req->jabatan;
             $kota = $req->jenis_wilayah . ' ' . $req->nama_wilayah;
             $data->kota = $kota;
@@ -54,7 +50,7 @@ class LowonganController extends Controller
             $data->durasi = $req->durasi;
             $data->deskripsi = $req->deskripsi;
             $data->gaji = $req->gaji;
-            $data->save();
+            $data->update();
             return redirect('/profile#lowongan')->with('updated', 'Berhasil update lowongan');
         } else {
             return view('/errors/404');

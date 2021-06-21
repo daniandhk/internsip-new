@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LowonganController;
+use App\Http\Controllers\LamaranController;
 use Illuminate\Support\Facades\DB;
 
 /*
@@ -33,38 +34,40 @@ Route::get('/profile', function () {
                                     ->get();
         $lamaran = App\Models\Lamaran::orderBy('id', 'asc')
                                     ->get();
-        if(session('role') == 'Admin') {
-            // $data = App\Models\Admin::findOrFail($id);
-            // return view('profile')
-            //     ->with(['data' => $data]);
-            return redirect('/');
+        $perusahaan = App\Models\Perusahaan::orderBy('id', 'asc')
+                                    ->get();
+        $pelamar = App\Models\User::orderBy('id', 'asc')
+                                    ->get();
+                                    
+        $profile = null;
+        if(session('role') == 'Perusahaan') {
+            $profile = App\Models\Perusahaan::findOrFail($id);
         }
-        elseif(session('role') == 'Perusahaan') {
-            $data = App\Models\Perusahaan::findOrFail($id);
-            return view('profile')
-                ->with(['data' => $data])
-                ->with(['lamaran' => $lamaran])
-                ->with(['lowongan' => $lowongan]);
-        }
-        elseif(session('role') == 'User') {
-            $data = App\Models\User::findOrFail($id);
-            return view('profile')
-                ->with(['data' => $data])
-                ->with(['lamaran' => $lamaran]);
+        elseif(session('role') == 'Pelamar') {
+            $profile = App\Models\User::findOrFail($id);
         }
         else {
             return redirect('/');
         }
+        return view('profile')
+                ->with(['profile' => $profile])
+                ->with(['lamaran' => $lamaran])
+                ->with(['lowongan' => $lowongan])
+                ->with(['perusahaan' => $perusahaan])
+                ->with(['pelamar' => $pelamar]);
     } else {
         return redirect('/');
     }
 });
 
 Route::get('/list-lowongan', function() {
-    $datas = App\Models\Lowongan::orderBy('id', 'asc')
+    $lowongan = App\Models\Lowongan::orderBy('id', 'asc')
+                                ->get();
+    $perusahaan = App\Models\Perusahaan::orderBy('id', 'asc')
                                 ->get();
     return view('list-lowongan')
-        ->with(['datas' => $datas]);
+        ->with(['lowongan' => $lowongan])
+        ->with(['perusahaan' => $perusahaan]);
 });
 
 Route::get('/list-perusahaan', function () {
@@ -104,8 +107,15 @@ Route::get('/register-perusahaan', function() {
     }
 });
 Route::post('perusahaanRegisterForm',[UserController::class,'registerPerusahaan']);
-
 Route::post('/updateProfile/{id}',[UserController::class,'updateProfile']);
+
 Route::post('/addLowongan',[LowonganController::class,'addLowongan']);
 Route::post('/updateLowongan/{id}',[LowonganController::class,'updateLowongan']);
 Route::delete('/deleteLowongan/{id}',[LowonganController::class,'deleteLowongan']);
+
+Route::post('/addLamaran',[LamaranController::class,'addLamaran']);
+Route::get('/downloadCv/{id}',[LamaranController::class,'downloadCv']);
+Route::post('/confirmLamaran/{id}',[LamaranController::class,'confirmLamaran']);
+Route::post('/declineLamaran/{id}',[LamaranController::class,'declineLamaran']);
+Route::post('/updateLamaran/{id}',[LamaranController::class,'updateLamaran']);
+Route::delete('/deleteLamaran/{id}',[LamaranController::class,'deleteLamaran']);

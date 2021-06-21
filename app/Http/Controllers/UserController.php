@@ -24,7 +24,7 @@ class UserController extends Controller
                                         ->first();
                 $req->session()->put('user', $data_user);
                 $req->session()->put('status', 'LOGGED_IN');
-                $req->session()->put('role', 'User');
+                $req->session()->put('role', 'Pelamar');
                 $req->session()->put('token', $data['_token']);
                 return redirect('/');
             } else {
@@ -83,7 +83,7 @@ class UserController extends Controller
         $data->telepon = $req->telepon;
         $data->email = $req->email;
         $data->password = md5($req->password);
-        $data->imageName = "";
+        $data->imageName = "default-ava.png";
         $data->save();
         return redirect('/login')->with('success', 'Your account has been successfully created!');
     }
@@ -106,7 +106,7 @@ class UserController extends Controller
         $data->telepon = $req->telepon;
         $data->email = $req->email;
         $data->password = md5($req->password);
-        $data->imageName = "";
+        $data->imageName = "default-ava.png";
         $data->save();
         return redirect('/login')->with('success', 'Your account has been successfully created!');
     }
@@ -153,7 +153,7 @@ class UserController extends Controller
             $data->update();
             return redirect('/profile#profile')->with('updated', 'Berhasil update profile');
         } 
-        elseif(session('role') == 'User') {
+        elseif(session('role') == 'Pelamar') {
             $data = User::find($id);
 
             if($req->email != null){

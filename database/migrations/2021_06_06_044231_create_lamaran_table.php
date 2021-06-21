@@ -16,8 +16,10 @@ class CreateLamaranTable extends Migration
         Schema::create('lamaran', function (Blueprint $table) {
             $table->id();
             $table->string('id_lowongan');
+            $table->string('id_perusahaan');
             $table->string('id_pelamar');
             $table->string('cvName');
+            $table->string('status');
             $table->timestamps();
         });
     }
