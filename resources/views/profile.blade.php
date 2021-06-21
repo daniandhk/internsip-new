@@ -522,8 +522,13 @@
                                             </td>
                                             <td >
                                                 <div class="row justify-content-center text-center">
+                                                    @if ($lamaran->status != "Confirmed")
                                                     <button class="btn btn-info m-1" data-toggle="modal"
                                                         data-target="#lamaranEdit{{ $loop->iteration }}">Edit</button>
+                                                    @else
+                                                    <button class="btn btn-info m-1" data-toggle="modal"
+                                                        data-target="#lamaranEdit{{ $loop->iteration }}" disabled>Edit</button>
+                                                    @endif
                                                     <button class="btn btn-danger m-1" data-toggle="modal"
                                                         data-target="#lamaranDelete{{ $loop->iteration }}">Delete</button>
                                                 </div>
