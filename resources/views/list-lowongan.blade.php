@@ -15,7 +15,7 @@
 </div>
 
 <section id="lowongan" class="container py-5">
-    <div id="lowongan-list" class="row justify-content-center" style="background-color: #E6E6E6;">
+    <div id="lowongan-list" class="row justify-content-center" style="background-color: #B8CFEC;">
         @foreach ($lowongan as $lowongan)
             @php
                 $temp = null
@@ -73,7 +73,7 @@
                         <img class="img-fluid"
                             src="{{ url('/images/Avatar') . '/' . $temp->imageName }}" alt="{{$temp->nama_perusahaan}}">
                         <hr>
-                        <div class="px-4" style="text-align: justify">
+                        <div class="px-4" style="text-align: justify; background-color: #B8CFEC">
                             <h2>{{$temp->nama}}</h2>
                             <h4>{{$lowongan->jabatan}}</h4>
                             <p>{{$lowongan->kota}}</p>

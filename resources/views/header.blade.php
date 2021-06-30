@@ -153,7 +153,7 @@
     <div id="ModalLogin" class="modal fade">
         <div class="modal-dialog modal-login">
             <div class="modal-content">
-                <div class="modal-header">				
+                <div class="modal-header">              
                     <h4 class="modal-title">Login</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
@@ -174,7 +174,7 @@
                             <input name="email" id="email" type="email" class="form-control" placeholder="Email" required="required">
                         </div>
                         <div class="form-group">
-                            <input name="password" id="password" type="password" class="form-control" placeholder="Password" required="required">					
+                            <input name="password" id="password" type="password" class="form-control" placeholder="Password" required="required">                   
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-success btn-block btn-lg" id="btnlogin" value="Login">

@@ -23,6 +23,7 @@
 
 <body style="padding-top: 30px !important;">
     <div class="container">
+        <div style="background-color: #B8CFEC;">
         <div class="row text-center shadow mx-1">
             <div class="col-md-12 col-xs-12 col-sm-12">
                 <div class="container">
@@ -99,6 +100,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </body>

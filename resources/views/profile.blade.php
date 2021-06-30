@@ -177,7 +177,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-3">
-                                        <button class="btn btn-primary" type="submit">Tambah Lowongan</button>
+                                        <button class="btn btn-primary btn-sm" type="submit">Tambah Lowongan</button>
                                     </div>
                                 </div>
                             </form>
@@ -351,6 +351,7 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Pelamar</th>
+                                        <th scope="col">e-mail</th>
                                         <th scope="col">Posisi</th>
                                         <th scope="col">CV</th>
                                         <th scope="col">Status</th>
@@ -388,7 +389,8 @@
                                     @if ($lamaran->id_perusahaan == $profile->id)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
-                                            <td>{{ $data_pelamar->email }}</td>
+                                            <td>{{ $data_pelamar->nama }}</td>
+                                            <td>{{ $data_pelamar->email}}</td>
                                             <td>{{ $data_lowongan->jabatan }}</td>
                                             <td>
                                                 <div class="row justify-content-center text-center">
@@ -423,7 +425,7 @@
                                                     <div class="modal-header">
                                                         <h5 class="modal-title"
                                                             id="viewCv">CV 
-                                                            {{$data_pelamar->email}}</h5>
+                                                            {{$data_pelamar->nama}}</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
